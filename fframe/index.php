@@ -17,6 +17,8 @@
  * /admin/ 	- is another tough one 
  */
 
+session_start();
+
 /**
  * base directory so there aren't any issues with including files
  */

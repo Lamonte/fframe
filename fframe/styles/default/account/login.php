@@ -14,14 +14,9 @@
 			<label>Password</label>
 			<input type="password" name="password" />
 		</div><!-- end .formrow -->
-		
+	
 		<div class="formrow">
-			<label>Password (again)</label>
-			<input type="password" name="password_again" />
-		</div><!-- end .formrow -->
-		
-		<div class="formrow">
-			<input type="submit" name="submit" value="Register" />
+			<input type="submit" name="submit" value="Login" />
 		</div><!-- end .formrow -->
 	</div><!-- end #appform -->
 </form>

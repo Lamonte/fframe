@@ -112,4 +112,12 @@ class validate {
 	public function rule_empty($input) {
 		return !isset($_POST[$input]) || empty($_POST[$input]) ? true : false;
 	}
+
+	public function errors($array = false) {
+		if($array) {
+			return self::$errors;
+		}
+
+		return "<ul><li>" . implode("</li><li>", self::$errors) . "</li></ul>";
+	}
 }
