@@ -1,0 +1,33 @@
+TODO
+--------
+- /ADMIN/ - need find the best way to approach the way we access the admin panel, a lot of current forum softwares use
+the admin forum and it's basically saying okay lets reenact the way our framework already runs, except now we're under
+a different sub path that you have to worry about.  Wondering if I could do something like this without changing to much
+core code.
+
+- Manage Roles - basically a section in the admin panel where you can create new roles then edit the permissions that
+each role can have.  Which also means it would be a good time to add a description field to the permissions database table for each new permission.  Also need a proper naming system for the permissions ie: admin_role_create, user_profile_edit etc...
+
+- Manage Users - after I finish setting up roles, this should be added directly after CRUD (create, read, update, delete)
+without the C.  Also regarding deleting people, there will be roles for updating, deleting peoples account just so people
+won't abuse it.
+
+- Manage Forums - going to be neat, there aren't any categories just parent forums and sub forums.  Ordering will use
+basic javascript with up and down arrows on each forum which moves a forum up or down.  I feel that's the easiest way
+to combat forum ordering instead of weird drop down select the order bs if that makes sense.  Also forums with url redirects can't have children forums.  Can still be ordered.
+	
+	- forum permissions - which roles can CRUD threads in this forum 
+
+WHATS DONE?
+--------
+- Permission Role Class - allows users to have many roles (or groups for what it's worth) and each role can be signed to
+many permissions which is great.  Allows for a lot of flexibility with permissions throughout the system.  Also custom
+roles can be easily done in the future especially with the role/permission editor that will be added.
+
+- Basic Authentication - users can register and login, registration is limited to username and password for now which
+will be expanded soon.
+
+- Basic MVC - action classes (controller) auto load view files based on the page - then from there we have just normal
+classes that we load for handling database things.  Which basically is an include file.  Also as for the basic url
+schema: /action/page/paramN+/, basically just like a MVC url schema.  Only problem I foresee is viewing forum indexes
+may need to setup custom routing.
