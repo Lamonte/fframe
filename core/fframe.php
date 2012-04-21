@@ -18,18 +18,11 @@ require_once $basedir . 'core/database.php';
 class FFrame {
 
 	/**
-	 * class construct
-	 */
-	public function __construct() {
-
-	}
-
-	/**
 	 * put everything together so the forum will run
 	 * 
 	 * @return void
 	 */
-	public function run() {
+	public function run($admin =  false) {
 
 		global $db;
 
@@ -38,12 +31,16 @@ class FFrame {
 		/**
 		 * need to grab the action from url + its pages
 		 */
-		$this->action_from_url();
+		$this->action_from_url($admin);
 
 		/**
 		 * load action from url if action exists
 		 */
-		$this->load_action();
+		if($admin == true) {
+			$this->load_action($admin);
+		} else {
+			$this->load_action();
+		}	
 	}
 
 	/**
@@ -52,16 +49,17 @@ class FFrame {
 	 *
 	 * @return void
 	 */
-	public function load_action() {
+	public function load_action($admin = false) {
 
 		global $basedir;
 
+		$includeDirectory = $admin == true ? 'admin/' : 'core/';
 		$currentAction = preg_replace('/[^a-zA-Z0-9_-]+/i','', $_GET['_action']);
 		
 		/**
 		 * lets check if the current action file exists or attempt to load the default
 		 */
-		$actionFile = $basedir . 'core/actions/' . strtolower($currentAction) . '.php';
+		$actionFile = $basedir . $includeDirectory . 'actions/' . strtolower($currentAction) . '.php';
 
 		if(file_exists($actionFile)) {
 			require_once $actionFile;
@@ -70,7 +68,7 @@ class FFrame {
 			/**
 			 * lets attempt to load the default action file from the server
 			 */
-			$actionFile = $basedir . 'core/actions/index.php';
+			$actionFile = $basedir . $includeDirectory . 'actions/index.php';
 
 			/**
 			 * need to tell the script the current action is default
@@ -135,7 +133,7 @@ class FFrame {
 	 *
 	 * @return void
 	 */
-	public function action_from_url() {
+	public function action_from_url($admin = false) {
 
 		global $config;
 
@@ -155,8 +153,8 @@ class FFrame {
 		/**
 		 * now lets clean up the url and get the path only
 		 */
-		$currentUrl = str_replace($config[workspace]['install_path'], '', $currentUrl);
-
+		$currentUrl = str_replace($config[workspace]['install_path'] . ($admin ? 'admin/' : null), '', $currentUrl);
+		
 		/**
 		 * lets remove the forward slash at the beginning & end of the url path
 		 */

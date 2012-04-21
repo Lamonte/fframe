@@ -1,6 +1,6 @@
 TODO
 --------
-- /ADMIN/ - need find the best way to approach the way we access the admin panel, a lot of current forum softwares use
+[x] - /ADMIN/ - need find the best way to approach the way we access the admin panel, a lot of current forum softwares use
 the admin forum and it's basically saying okay lets reenact the way our framework already runs, except now we're under
 a different sub path that you have to worry about.  Wondering if I could do something like this without changing to much
 core code.
