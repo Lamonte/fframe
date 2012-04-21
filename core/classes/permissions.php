@@ -11,6 +11,21 @@ class permissions {
 	 * array of user permissions
 	 */
 	public $permissions	= array();
+	
+	/**
+	 * class instance
+	 */
+	public static $instance = null;
+
+	/**
+	 * singleton function - get instance of this class
+	 */
+	public function instance() {
+		if(is_null(self::$instance)) {
+			self::$instance = new permissions();
+		}
+		return self::$instance;
+	}
 
 	/**
 	 * get user id and attempt to load user permissions
@@ -61,7 +76,6 @@ class permissions {
 		 * loop through the array and attempt get every possible permission name
 		 */
 		foreach($result as $permissions) {
-
 			if(!in_array($permissions['permname'], $this->permissions)) {
 				$this->permissions[] = $permissions['permname'];
 			}

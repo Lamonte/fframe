@@ -32,7 +32,7 @@ class view {
 		 * lets make sure the file exists
 		 */
 		if( !file_exists($templatePath)) {
-			throw new exception('The template view file that yuou were trying to load does not exist: ' . 'styles/' . $config[workspace]['style'] . '/' . $template . '.php' );
+			throw new exception('The template view file that you were trying to load does not exist: ' . 'styles/' . $config[workspace]['style'] . '/' . $template . '.php' );
 		}
 
 		/**

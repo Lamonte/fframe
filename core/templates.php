@@ -16,14 +16,16 @@ class Templates {
 	protected $data;
 	protected $action;
 	protected $page;
+	protected $admin;
 
 	/**
 	 * setup default variables to determine which action templates to load
 	 */
-	public function __construct(stdClass $data, $action, $page) {
-		$this->data = $data;
-		$this->action = $action;
-		$this->page = $page;
+	public function __construct(stdClass $data, $action, $page, $admin = false) {
+		$this->data 	= $data;
+		$this->action 	= empty($action) ? 'index' : $action;
+		$this->page 	= empty($page) ? 'default' : $page;
+		$this->admin 	= $admin;
 	}
 
 	/**
@@ -42,8 +44,10 @@ class Templates {
 		/**
 		 * attempt to load action file
 		 */
-		$template = new view($this->data);
-		$this->action_html = $template->load_template($this->action . '/' . $this->page);
+		$template 		= new view($this->data);
+		$viewfile 		= ($this->admin ? 'admin/' : null) . $this->action . '/' . $this->page;
+
+		$this->action_html 	= $template->load_template($viewfile);
 
 	}
 
@@ -65,7 +69,10 @@ class Templates {
 		/**
 		 * load body template and display it to the browser
 		 */
-		$template = new view($data);
-		$template->load_template('body', true);
+
+		$templateFile 	= $this->admin ? 'adminbody' : 'body';
+		$template 	= new view($data);
+
+		$template->load_template($templateFile, true);
 	}
 }

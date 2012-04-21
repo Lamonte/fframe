@@ -12,6 +12,11 @@ $basedir = strtolower(str_replace('\\', '/', __DIR__)) . '/';
 require_once $basedir . 'config.php';
 
 /**
+ * include global functions
+ */
+require_once $basedir . 'core/functions.php';
+
+/**
  * require the fframe class
  */
 require_once $basedir . 'core/fframe.php';

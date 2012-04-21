@@ -7,10 +7,8 @@ class account_action extends ActionObject {
 	 */
 	public $userid		= null;
 	
-	public function __construct($db) {
+	public function __construct() {
 		parent::__construct();
-
-		$this->db = $db;
 
 		$modelFile = str_replace('\\', '/', strtolower(__DIR__))  . '/classes/account_model.php';
 
@@ -133,6 +131,13 @@ class account_action extends ActionObject {
 				$this->data->message = validate::errors();
 			}
 		}
+	}
+
+	public function page_logout() {
+
+		$_SESSION = array();
+		redirect("account/login");
+		
 	}
 
 /**

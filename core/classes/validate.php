@@ -6,12 +6,19 @@ class validate {
 	 * static array that holds error messages
 	 */
 	public static $errors = array();
+
+	/**
+	 * error messages
+	 */
 	public $errors_text = array(
 		'validate::rule_empty' => '$1 was left empty',
 	);
 
+	/**
+	 * stored rules
+	 */
 	public $rules = array();
-	
+
 	/**
 	 * set validation rule to input
 	 *

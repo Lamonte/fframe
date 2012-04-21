@@ -53,54 +53,41 @@ class FFrame {
 
 		global $basedir;
 
-		$includeDirectory = $admin == true ? 'admin/' : 'core/';
-		$currentAction = preg_replace('/[^a-zA-Z0-9_-]+/i','', $_GET['_action']);
+		$includeDirectory 	= $admin == true ? 'admin/' : 'core/';
+		$currentAction 		= preg_replace('/[^a-zA-Z0-9_-]+/i','', $_GET['_action']);
+		$currentAction 		= empty($currentAction) ? 'index' : $currentAction;
 		
 		/**
 		 * lets check if the current action file exists or attempt to load the default
 		 */
-		$actionFile = $basedir . $includeDirectory . 'actions/' . strtolower($currentAction) . '.php';
+		$actionFile 		= $basedir . $includeDirectory . 'actions/' . strtolower($currentAction) . '.php';
 
-		if(file_exists($actionFile)) {
-			require_once $actionFile;
-		} else {
-
-			/**
-			 * lets attempt to load the default action file from the server
-			 */
-			$actionFile = $basedir . $includeDirectory . 'actions/index.php';
-
-			/**
-			 * need to tell the script the current action is default
-			 */
-			$currentAction = 'index';
-
-
-			if(file_exists($actionFile)) {
-				require_once $actionFile;
-			}
+		if(!file_exists($actionFile)) {
+			throw new exception('Could not load action class file: ' . $actionFile);
 		}
+
+		require_once $actionFile;
 
 		/**
 		 * lets check if the class exists
 		 */
-		$actionClass = $currentAction . '_action';
+		$actionClass 		= $currentAction . '_action';
 
 		if(!class_exists($actionClass)) {
 			throw new exception('The following action class could not be loaded: "' . $actionClass . '" (' . $actionFile . ')');
 		}
 
-		$actionClass = new $actionClass($this->db);
+		$actionClass 		= new $actionClass($this->db);
 
 		/**
 		 * we need to load the appropriate page or attempt to trigger the default page method
 		 */
-		$currentPage = preg_replace('/[^a-zA-Z0-9_-]+/i','', $_GET['_page']);
+		$currentPage 		= preg_replace('/[^a-zA-Z0-9_-]+/i','', $_GET['_page']);
 
 		if(empty($currentPage)) {
-			$pageMethod = 'page_index';
+			$pageMethod 	= 'page_index';
 		} else {
-			$pageMethod = 'page_' . $currentPage;
+			$pageMethod 	= 'page_' . $currentPage;
 		}
 
 		/**
@@ -113,15 +100,14 @@ class FFrame {
 		/**
 		 * call the class page method and send arguments if necessary
 		 */
-		$params = empty($_GET['_params']) ? array() : $_GET['_params'];
+		$params 		= empty($_GET['_params']) ? array() : $_GET['_params'];
 
 		call_user_func_array(array($actionClass, $pageMethod), $params);
 
 		/**
 		 * output the templates to the browser
 		 */
-		$templates = new Templates($actionClass->getData(), $currentAction, $currentPage);
-
+		$templates = new Templates($actionClass->getData(), $currentAction, $currentPage, $admin);
 		$templates->display();
 	}
 
@@ -212,5 +198,17 @@ class FFrame {
 				$_GET['_params'] = $resetArray;
 			}
 		}
+	}
+
+	public static function getException($e) {
+
+		echo $e->getMessage() . "<br />\n";
+		echo "Error File: " . $e->getFile() . " (on line: " . $e->getLine() . ")<br />\n";
+		echo "Trace Error:<br />\n";
+		foreach($e->getTrace() as $trace) {
+			echo "\t" . str_repeat("&nbsp;", 4);
+			echo "File: (On line: " . $trace['line'] . ") " . $trace['file'] . ";  Class: " . $trace['class'] . '; Function: ' . $trace['function'] . "<br />\n";
+		}
+
 	}
 }
