@@ -5,19 +5,19 @@ class validate {
 	/**
 	 * static array that holds error messages
 	 */
-	public static $errors = array();
+	public static $errors 	= array();
 
 	/**
 	 * error messages
 	 */
-	public $errors_text = array(
+	public $errors_text 	= array(
 		'validate::rule_empty' => '$1 was left empty',
 	);
 
 	/**
 	 * stored rules
 	 */
-	public $rules = array();
+	public $rules 		= array();
 
 	/**
 	 * set validation rule to input
@@ -64,6 +64,10 @@ class validate {
 		 			 */
 		 			if(is_callable(array($this, 'rule_' . $rules_array), true, $callable)) {
 		 				$return = call_user_func(array($this, 'rule_' . $rules_array), $rule[0]);
+
+		 				/**
+		 				 * if error returns true after calling the class method
+		 				 */
 		 				if($return) {
 
 		 					/**
@@ -74,6 +78,10 @@ class validate {
 		 					}
 
 		 					self::$errors[] = str_replace('$1', $rule[0], $this->errors_text[strtolower($callable)]);
+		 					
+		 					/**
+		 					 * check if we want the error messages to display one by one per set rule
+		 					 */
 		 					if($rule[2] == true) {
 		 						break;
 		 					}
@@ -89,8 +97,13 @@ class validate {
 		 		if(is_array($rules_array)) {
 
 		 			if(is_callable($rules_array['callback'], true, $callable)) {
-		 				$rules_array['params'] = !isset($rules_array['params']) || !is_array($rules_array['params']) ? array() : $rules_array['params'];
-		 				$return = call_user_func_array($rules_array['callback'], array_merge(array($rule[0]), $rules_array['params']));
+
+		 				$rules_array['params'] 	= !isset($rules_array['params']) || !is_array($rules_array['params']) ? array() : $rules_array['params'];
+		 				$return 		= call_user_func_array($rules_array['callback'], array_merge(array($rule[0]), $rules_array['params']));
+		 				
+		 				/**
+		 				 * if error returns true after calling the class method
+		 				 */
 		 				if($return) {
 
 		 					/**

@@ -1,6 +1,9 @@
 <?php
-
+/**
+ * start session
+ */
 session_start();
+
 /**
  * base directory so there aren't any issues with including files
  */

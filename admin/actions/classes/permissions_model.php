@@ -30,4 +30,15 @@ class permissions_model {
 
 		return $result;
 	}
+
+	public function create_permission() {
+
+		$permission 	= r::post("name");
+		$description	= r::post("desc", true);
+
+		$this->prepare 	= $this->db->prepare("INSERT INTO `permissions` (`permname`, `description`) VALUES (?, ?)");
+		$result		= $this->prepare->execute(array($permission, $description));
+
+		return !$result ? false : true;
+	}
 }

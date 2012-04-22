@@ -1,9 +1,5 @@
-TODO
---------
-[x] - /ADMIN/ - need find the best way to approach the way we access the admin panel, a lot of current forum softwares use
-the admin forum and it's basically saying okay lets reenact the way our framework already runs, except now we're under
-a different sub path that you have to worry about.  Wondering if I could do something like this without changing to much
-core code.
+IMPORTANT TODO
+---------------
 
 - Manage Roles - basically a section in the admin panel where you can create new roles then edit the permissions that
 each role can have.  Which also means it would be a good time to add a description field to the permissions database table for each new permission.  Also need a proper naming system for the permissions ie: admin_role_create, user_profile_edit etc...
@@ -18,8 +14,28 @@ to combat forum ordering instead of weird drop down select the order bs if that 
 	
 	- forum permissions - which roles can CRUD threads in this forum 
 
+- Update validation class so you can mask input names in error messages to something more presentable to the user via some sort of 
+array setting.
+
+- editing and deleting non default permission pages
+
+- when I get to the forum view page I'm going to need to have a way to route urls to certain actions because by default if people
+want to view forum they would have to visit: example.com/forum/view/id instead of just example.com/forum/id, but viewing threads
+will be straight to the point not sure if i want threads to have their own action page or have them combined with forum action
+ie. example.com/forum/thread/id or just example.com/thread/id which would mean the url masking would flexible - i could borrow
+the code i already wrote for my new framework though.
+
+- create an elegant forum index theme and admin panel theme
+
+- add admin directory to the config file, that way we can have our code even more flexible for lets say wanting to change
+the path to the administration panel for safe keeping from asshats
+
+- keep all variables within the same if/else scope with the same tab spacing between the equal signs (must line up in same if/else scope)
+
+- figure out a better versioning system lol
+
 WHATS DONE?
---------
+----------------
 - Permission Role Class - allows users to have many roles (or groups for what it's worth) and each role can be signed to
 many permissions which is great.  Allows for a lot of flexibility with permissions throughout the system.  Also custom
 roles can be easily done in the future especially with the role/permission editor that will be added.
@@ -31,3 +47,10 @@ will be expanded soon.
 classes that we load for handling database things.  Which basically is an include file.  Also as for the basic url
 schema: /action/page/paramN+/, basically just like a MVC url schema.  Only problem I foresee is viewing forum indexes
 may need to setup custom routing.
+
+- Viewing and Creating Permissions
+
+- /ADMIN/ - need find the best way to approach the way we access the admin panel, a lot of current forum softwares use
+the admin forum and it's basically saying okay lets reenact the way our framework already runs, except now we're under
+a different sub path that you have to worry about.  Wondering if I could do something like this without changing to much
+core code.

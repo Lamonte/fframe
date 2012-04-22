@@ -60,7 +60,7 @@ class Templates {
 		 * setup a empty object to store data
 		 */
 		$data = new stdClass;
-		$data->content = $this->action_html;
+		$data->content 	= $this->action_html;
 
 		/**
 		 * this is where we'll have more code to add to the body template
