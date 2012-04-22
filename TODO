@@ -32,7 +32,9 @@ the path to the administration panel for safe keeping from asshats
 
 - keep all variables within the same if/else scope with the same tab spacing between the equal signs (must line up in same if/else scope)
 
-- figure out a better versioning system lol
+[x] - figure out a better versioning system lol
+
+- figure out a way to change the version of every file when doing a change
 
 WHATS DONE?
 ----------------

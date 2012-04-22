@@ -1,5 +1,5 @@
 =FFrame
-FFrame is a forum software which stands for Forum Framework.  I had an idea where I combined the basics of a MVC framework to create a simply yet flexible forum software.
+FFrame is a forum software which stands for Forum Framework.  I had an idea where I combined the basics of a MVC framework to create a simple yet flexible forum software.
 
 ==Super Alpha
 Right now I'm in the process if still developing the base of the forum software.  Right now I'm just heading into the administration panel and setting up role based permission access.  Users have many roles and roles have many permissions type thing going on.  So basically once I finish the last part of the administration panel (which will be the manage forums section after the manage users portion) is when I want to start attempting to do versioning and getting people to help improve the software.  Make it fast and then implement a way to hack it (ie. plugins)
@@ -13,3 +13,9 @@ Right now I'm in the process if still developing the base of the forum software.
 6. It might look ugly right now until I find someone who's extremely interested in this project to help make it look sexy.
 7. This is a project I'm working on in my free time so if you are feeling froggy and want to fork this project and start writing code do so.  I won't be mad :)
 8. It won't be the most advanced code.  vbulletin and ipb have a huge team of developers making their code look "professional", w/e lol I want my code to be readable to the next coder where they can hop right in and mod to their likings without having to learn "yet another framework/forum's inner workings"
+
+==Versioning
+So we're going to use 3 position versioning (ma.mi.bf)  First position will be the major release and since the first major release isn't completed we'll start with zero.  The second position will be the the minor release.  In our case it'll be the development state before the release version: 0 = alpha, 1 = beta, 2 = release candiddate and once complete we'll move to the first major release.  The third position is bug fixes within that minor release, but since we're in the development stage it'll represent the current build we're on.  Basically which ever version is uploaded to the github repository is a build release.
+
+===Software release life cycle
+http://en.wikipedia.org/wiki/Software_release_life_cycle
