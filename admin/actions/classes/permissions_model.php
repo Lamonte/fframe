@@ -22,6 +22,11 @@ class permissions_model {
 		$this->db = $db;
 	}
 
+	/**
+	 * select all permissions from the database
+	 *
+	 * @return array
+	 */
 	public function select_permissions() {
 
 		$prepare 	= $this->db->prepare("SELECT * FROM `permissions`");
@@ -31,6 +36,11 @@ class permissions_model {
 		return $result;
 	}
 
+	/**
+	 * add new permission to the database
+	 *
+	 * @return boolean - true/false if there was an issue = false
+	 */
 	public function create_permission() {
 
 		$permission 	= r::post("name");

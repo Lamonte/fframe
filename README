@@ -1,0 +1,18 @@
+FFrame
+-----------
+FFrame is a forum software which stands for Forum Framework.  I had an idea where I combined the basics of a MVC framework to create a simply yet flexible forum software.
+
+Super Alpha
+-----------
+Right now I'm in the process if still developing the base of the forum software.  Right now I'm just heading into the administration panel and setting up role based permission access.  Users have many roles and roles have many permissions type thing going on.  So basically once I finish the last part of the administration panel (which will be the manage forums section after the manage users portion) is when I want to start attempting to do versioning and getting people to help improve the software.  Make it fast and then implement a way to hack it (ie. plugins)
+
+Things you should know
+------------
+1. FFrame will always be free, this is mainly an experiment and a dream that I've had since 2006 which technically got me into programming in the first place.
+2. There are role based permissions (users have many roles, roles have many permissions) and an easy way to add many more roles and permissions from the administration panel.
+3. Templates are locked to action files (which are essentially controller classes.)  Editing templates are as easy as wordpress though
+4. I use a simple database driver which extends PDO.  You can practically setup any database driver that works with PDO.  Pretty much switched to PDO after PHP 5.4 removed support for mysql_* classes.  Might as well hop on the train.
+5. This forum software is going to be as flexible as possible.  Basically taking the base of a MVC framework and dropping the fundamentals of a forum software on top of it.  So it'll be easy to add pages to the administration panel, main website as long as you follow structure of how action classes and view files work.  Really simple to setup pages once you look at the source code and get things running (anyone remember how fun phpbb 2.x was to mod the source code because of how simple/straight to the point it was?  I want something like that as an end product.)
+6. It might look ugly right now until I find someone who's extremely interested in this project to help make it look sexy.
+7. This is a project I'm working on in my free time so if you are feeling froggy and want to fork this project and start writing code do so.  I won't be mad :)
+8. It won't be the most advanced code.  vbulletin and ipb have a huge team of developers making their code look "professional", w/e lol I want my code to be readable to the next coder where they can hop right in and mod to their likings without having to learn "yet another framework/forum's inner workings"
