@@ -17,3 +17,13 @@ function redirect($location) {
 	header("Location: " . $location);
 	exit();
 }
+
+/**
+ * get configuration url
+ */
+function get_url($path = null) {
+
+	global $config;
+
+	return $config[workspace]['install_path'] . $path;
+}

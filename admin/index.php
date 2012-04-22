@@ -1,7 +1,9 @@
 <?php
+/**
+ * Administration panel index
+ */
 
 include_once '/../includes.php';
-
 
 try {
 

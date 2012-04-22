@@ -1,0 +1,17 @@
+PERMISSIONS
+-----------
+
+admin:
+admin_access
+
+admin role management:
+admin_role_access /can access role management
+admin_role_create /can create roles
+admin_role_modify /can modify roles
+admin_role_delete /can delete roles
+
+admin permission management:
+admin_perm_access /can access role management
+admin_perm_create /can create roles
+admin_perm_modify /can modify roles
+admin_perm_delete /can delete roles
