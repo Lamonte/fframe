@@ -51,6 +51,20 @@ class Database extends PDO {
 		 * lets try creating a new pdo instance and turn this class into a pdo object
 		 */
 		parent::__construct($driverClass->driver, $driverClass->username, $driverClass->password);
+	}
+
+	/**
+	 * return the error message from an errored out prepare statement
+	 *
+	 * @param PDOStatement $object - this is the return result from a prepared query
+	 * @return string
+	 */
+	public function getErrorInfo(PDOStatement $object) {
+		$error = $object->errorInfo();
+		if(!empty($error)) {
+			$error = $object->errorInfo();
+			return $error[2];
+		}
 	}	
 
 }

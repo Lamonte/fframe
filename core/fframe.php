@@ -227,7 +227,11 @@ class FFrame {
 		echo "Trace Error:<br />\n";
 		foreach($e->getTrace() as $trace) {
 			echo "\t" . str_repeat("&nbsp;", 4);
-			echo "File: (On line: " . $trace['line'] . ") " . $trace['file'] . ";  Class: " . $trace['class'] . '; Function: ' . $trace['function'] . "<br />\n";
+			if(isset($trace['file']) && isset($trace['line']) && isset($trace['class']) && isset($trace['function'])) {
+				echo "File: (On line: " . $trace['line'] . ") " . $trace['file'] . ";  Class: " . $trace['class'] . '; Function: ' . $trace['function'] . "<br />\n";
+			} else {
+				var_dump($trace);
+			}
 		}
 
 	}

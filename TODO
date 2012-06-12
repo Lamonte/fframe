@@ -1,4 +1,47 @@
-IMPORTANT TODO
+|============================================================|
+|	                CURRENT TODO LIST                    |
+|============================================================|
+
+- A way to redirect user from a successful login to the page they came from. (Probably passing data to the url address)
+- Finish code to edit and delete (no default) permissions
+- Ajax delete role request (alert confirmation box)
+- Add admin directory to the config file (allow it to be more flexible if you want to hide the admin panel url)
+- Add url routing (So I can route the forum view page when being accessed with just an id)
+- Update validation class so you can mask input names in error messages to something more presentable to the user via some sort of 
+array setting.
+- Setup forum permissions in dp -> which roles can CRUD threads in this forum
+
+Manage Roles - in the admin panel allow users to manage roles [or some would call them user groups] (w/ the appropriate permissions) -> CRUD (CREATE/READ/UPDATE/DELETE)
+-> [x] update
+-> [x] create
+-> [x] assign permissions to roles
+-> delete (non-default) roles
+
+Manage Users - in the admin panel allow users to manage users w/ the appropriate permissions they can CRUD (CREATE/READ/UPDATE/DELETE) users from the database.
+
+Manage Forums - just like manage users/roles -> same idea
+-> View Forum List (ADMIN)
+----> Show the Forum Name (link to edit) then a Delete link & a create subforum (which creates a child forum under that forum) & A move link 
+----> There will be Up/Down arrows for reordering forums [need to add a row into the db]
+-> Create Forum
+----> Forums with no parents are automaticallty made into a forum group (which groups normal forums or redirect forums together)
+----> Make sure parent exists if there is a parent forum
+-> Delete Forum
+-> Edit Forum
+-> Move forum
+-> Permissions 
+----> Who can create/read/post new threads/delete threads in this forum
+----> Who can moderate this forum
+--------> Assign groups to moderate this forum, Assign Individual Users to moderate this forum
+
+- Replace all error messages and common text with a language filter
+-> You should be able to change languages in the config settings (by default english should be set)
+
+|============================================================|
+|	        STUFF BELOW HERE IS IRRELEVANT               |
+|============================================================|
+
+OLD - IMPORTANT TODO
 ---------------
 
 - Manage Roles - basically a section in the admin panel where you can create new roles then edit the permissions that
@@ -34,7 +77,9 @@ the path to the administration panel for safe keeping from asshats
 
 [x] - figure out a better versioning system lol
 
-- figure out a way to change the version of every file when doing a change
+[x] - figure out a way to change the version of every file when doing a change
+
+- add ajax delete role request -> alert message once delete is complete or errored out
 
 WHATS DONE?
 ----------------

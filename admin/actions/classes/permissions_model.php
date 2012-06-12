@@ -31,7 +31,8 @@ class permissions_model {
 	 */
 	public static function inst() {
 		if(is_null(self::$instance)) {
-			self::$instance = new permissions_model();
+			$class = __CLASS__;
+			self::$instance = new $class();
 		}
 		return self::$instance;
 	}

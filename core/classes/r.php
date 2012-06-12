@@ -55,11 +55,22 @@ class r {
 		
 		switch($type) {
 			case INPUT_GET:
-				$string = &$_GET[$input];
-				$string = urldecode($string);
+				if(isset($_GET[$input])) {
+					$string = &$_GET[$input];
+					$string = urldecode($string);
+				} else {
+					return false;
+				}
 			break;
 			case INPUT_POST:
-				$string = &$_POST[$input];
+				if(isset($_POST[$input])) {
+					$string = &$_POST[$input];
+				} else {
+					return false;
+				}
+			break;
+			default:
+				return false;
 			break;
 		}
 
